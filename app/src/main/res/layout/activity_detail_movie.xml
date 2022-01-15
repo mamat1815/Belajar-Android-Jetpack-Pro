@@ -32,7 +32,7 @@
                     app:navigationIcon="@drawable/ic_back_white">
 
                     <TextView
-                        android:id="@+id/tv_toolbar_title"
+                        android:id="@+id/tv_toolbar_title_detail_movie"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -87,7 +87,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gray_700"
+        style="@style/colorBg"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout

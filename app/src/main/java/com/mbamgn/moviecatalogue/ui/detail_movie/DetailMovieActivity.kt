@@ -48,7 +48,7 @@ class DetailMovieActivity : AppCompatActivity() {
         binding.apply {
 
             if (detailMovie != null) {
-                tvToolbarTitle.text = detailMovie.title
+                tvToolbarTitleDetailMovie.text = detailMovie.title
                 tvDetailGenreMovie.text = detailMovie.genre
                 percentDetailMovie.setProgress(detailMovie.percentage, true)
                 tvDetailTitleMovie.text = detailMovie.title
