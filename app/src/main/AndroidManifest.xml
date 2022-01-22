@@ -3,7 +3,6 @@
     package="com.mbamgn.moviecatalogue">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,10 +14,7 @@
             android:name=".ui.main.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.detail_tv_show.DetailTvShowActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.detail_movie.DetailMovieActivity"
+            android:name=".ui.detail.DetailActivity"
             android:exported="false" />
         <activity
             android:name=".ui.splash.SplashScreenActivity"

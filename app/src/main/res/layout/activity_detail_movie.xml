@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".ui.detail_movie.DetailMovieActivity">
+    tools:context=".ui.detail.DetailActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         style="@style/colorBg"
@@ -85,9 +85,9 @@
 
 
     <androidx.core.widget.NestedScrollView
+        style="@style/colorBg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        style="@style/colorBg"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout

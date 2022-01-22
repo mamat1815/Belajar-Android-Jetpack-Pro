@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mbamgn.moviecatalogue.R
-import com.mbamgn.moviecatalogue.data.MovieEntity
+
 import com.mbamgn.moviecatalogue.databinding.ActivityMainBinding
 import com.mbamgn.moviecatalogue.ui.adapter.MainViewPager
 
@@ -37,12 +37,12 @@ class MainActivity : AppCompatActivity() {
             tvTitleRandom.text = resources.getString(R.string.random_movie)
 
             //RandomMovieToday
-            randomMovie(viewModel.getRandomMovie())
+           // randomMovie(viewModel.getRandomMovie())
 
         }
     }
 
-    private fun randomMovie(data: MovieEntity) {
+    /*private fun randomMovie(data: DataEntity) {
         binding.apply {
 
             tvTitleMain.text = data.title
@@ -54,6 +54,8 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+
+     */
 
     companion object {
         val TAB_TITLES = intArrayOf(

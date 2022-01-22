@@ -6,7 +6,7 @@ buildscript {
     }
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.4"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -21,19 +21,19 @@ ext {
     //dependencies version
 
     //kotlin
-    kotlinVersion = '1.6.0'
+    kotlinVersion = '1.6.10'
     coreVersion = '1.7.0'
     activityKotlin = '1.4.0'
 
     //UI
-    appCompatVersion = '1.4.0'
+    appCompatVersion = '1.4.1'
     constraintLayoutVersion = '2.1.2'
     recylerViewVersion = '1.2.1'
     materialVersion = '1.4.0'
     glideVersion = '4.12.0'
 
     //Testing
-    androidXTestVersion = '1.2.0'
+    debugVersion = '1.4.0'
     junitVersion = '4.13.2'
     espressoVersion = '3.4.0'
     androidTestVersion = '1.4.0'

@@ -11,6 +11,6 @@
         android:id="@+id/rv_tv_show"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/item_list_tv_show"/>
+        tools:listitem="@layout/item_list_tv_show" />
 
 </LinearLayout>

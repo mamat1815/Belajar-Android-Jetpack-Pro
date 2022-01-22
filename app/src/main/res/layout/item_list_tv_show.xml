@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
     android:layout_marginBottom="8dp"
-    app:cardCornerRadius="20dp"
-    xmlns:tools="http://schemas.android.com/tools">
+    app:cardCornerRadius="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -28,9 +28,9 @@
                 android:id="@+id/img_list_poster_tv_show"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="@string/image_detail_poster"
                 android:scaleType="fitXY"
-                tools:src="@drawable/poster_bohemian"
-                android:contentDescription="@string/image_detail_poster" />
+                tools:src="@drawable/poster_bohemian" />
 
         </androidx.cardview.widget.CardView>
 
@@ -50,7 +50,7 @@
             tools:text="@string/lorem" />
 
         <TextView
-            android:id="@+id/tv_list_duration_tv_show"
+            android:id="@+id/tv_list_release_date_tv_show"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_light"
@@ -59,14 +59,14 @@
             tools:text="@string/lorem" />
 
         <TextView
-            android:id="@+id/tv_list_genre_tv_show"
+            android:id="@+id/tv_list_desc_tv_show"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
             android:maxLines="2"
             app:layout_constraintEnd_toEndOf="@+id/tv_list_title_tv_show"
             app:layout_constraintStart_toStartOf="@+id/tv_list_title_tv_show"
-            app:layout_constraintTop_toBottomOf="@+id/tv_list_duration_tv_show"
+            app:layout_constraintTop_toBottomOf="@+id/tv_list_release_date_tv_show"
             tools:text="@string/lorem" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

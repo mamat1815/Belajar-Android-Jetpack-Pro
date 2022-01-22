@@ -1,25 +1,31 @@
 package com.mbamgn.moviecatalogue.ui.adapter
 
 import android.content.Intent
+import android.nfc.NfcAdapter.EXTRA_ID
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.mbamgn.moviecatalogue.R
-import com.mbamgn.moviecatalogue.data.MovieEntity
 import com.mbamgn.moviecatalogue.databinding.ItemListMovieBinding
-import com.mbamgn.moviecatalogue.ui.detail_movie.DetailMovieActivity
+import com.mbamgn.moviecatalogue.model.DataItem
+import com.mbamgn.moviecatalogue.ui.detail.DetailActivity
+import com.mbamgn.moviecatalogue.ui.diffcallback.MovieDiffCallback
 
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
-    private val listMovie = ArrayList<MovieEntity>()
+    private val listMovie = ArrayList<DataItem>()
 
-    fun setMovieData(data: List<MovieEntity>) {
+    fun setMovieData(data: List<DataItem>) {
+        val diffCallback = MovieDiffCallback(this.listMovie, data)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
         this.listMovie.apply {
             clear()
             addAll(data)
         }
+        diffResult.dispatchUpdatesTo(this)
     }
 
     override fun onCreateViewHolder(
@@ -38,26 +44,24 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
     inner class MovieViewHolder(private val binding: ItemListMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(movie: MovieEntity) {
+        fun bind(data: DataItem) {
             binding.apply {
-                tvListTitleMovie.text = movie.title
-                tvListDurationMovie.text = movie.duration
-                tvListGenreMovie.text = movie.genre
+                tvListTitleMovie.text = data.title
+                tvListReleaseDateMovie.text = data.releaseDate
+                tvListDescMovie.text = data.desc
 
                 Glide.with(itemView.context)
-                    .load(movie.img)
+                    .load("https://image.tmdb.org/t/p/w500${data.poster}")
                     .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
                     .error(R.drawable.ic_eror)
                     .into(imgListPosterMovie)
 
                 itemView.setOnClickListener {
-                    val intent = Intent(itemView.context, DetailMovieActivity::class.java)
-                    intent.putExtra(DetailMovieActivity.EXTRA_ID, movie.movieId)
+                    val intent = Intent(itemView.context, DetailActivity::class.java)
+                    intent.putExtra(DetailActivity.EXTRA_ID, data.id)
                     itemView.context.startActivity(intent)
                 }
             }
         }
-
     }
-
 }

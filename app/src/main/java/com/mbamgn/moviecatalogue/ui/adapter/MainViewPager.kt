@@ -10,12 +10,11 @@ import com.mbamgn.moviecatalogue.ui.tv_show.TvShowFragment
 
 class MainViewPager(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
     override fun createFragment(position: Int): Fragment {
-        var fragment: Fragment? = null
-        when (position) {
-            0 -> fragment = MovieFragment()
-            1 -> fragment = TvShowFragment()
+        return when (position) {
+            0 -> MovieFragment()
+            1 -> TvShowFragment()
+            else -> Fragment()
         }
-        return fragment as Fragment
     }
 
     override fun getItemCount(): Int = MainActivity.TAB_TITLES.size

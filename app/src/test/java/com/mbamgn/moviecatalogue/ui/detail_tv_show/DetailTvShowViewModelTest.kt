@@ -1,9 +1,9 @@
 package com.mbamgn.moviecatalogue.ui.detail_tv_show
 
 import com.mbamgn.moviecatalogue.utils.DataDummy
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 import org.junit.Before
-
 import org.junit.Test
 
 class DetailTvShowViewModelTest {
@@ -13,7 +13,7 @@ class DetailTvShowViewModelTest {
     private val tvShowId = dummyTvShow.tvShowId
 
     @Before
-    fun setUp(){
+    fun setUp() {
         viewModel = DetailTvShowViewModel()
         viewModel.setDetailTvShow(tvShowId)
     }

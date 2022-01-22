@@ -7,15 +7,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.mbamgn.moviecatalogue.R
-import com.mbamgn.moviecatalogue.data.TvShowEntity
 import com.mbamgn.moviecatalogue.databinding.ItemListTvShowBinding
-import com.mbamgn.moviecatalogue.ui.detail_tv_show.DetailTvShowActivity
+import com.mbamgn.moviecatalogue.model.DataItem
+import com.mbamgn.moviecatalogue.ui.detail.DetailActivity
 
 class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
 
-    private val listTvShow = ArrayList<TvShowEntity>()
+    private val listTvShow = ArrayList<DataItem>()
 
-    fun setTvShow(data: List<TvShowEntity>) {
+    fun setTvShow(data: List<DataItem>) {
         this.listTvShow.apply {
             clear()
             addAll(data)
@@ -37,23 +37,24 @@ class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
 
     inner class TvShowViewHolder(private val binding: ItemListTvShowBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: TvShowEntity) {
+        fun bind(data: DataItem) {
             binding.apply {
                 tvListTitleTvShow.text = data.title
-                tvListDurationTvShow.text = data.duration
-                tvListGenreTvShow.text = data.genre
+                tvListReleaseDateTvShow.text = data.releaseDate
+                tvListDescTvShow.text = data.desc
 
                 Glide.with(itemView.context)
-                    .load(data.img)
+                    .load("https://image.tmdb.org/t/p/w500${data.poster}")
                     .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
                     .error(R.drawable.ic_eror)
                     .into(imgListPosterTvShow)
 
                 itemView.setOnClickListener {
-                    val intent = Intent(itemView.context, DetailTvShowActivity::class.java)
-                    intent.putExtra(DetailTvShowActivity.EXTRA_ID, data.tvShowId)
+                    val intent = Intent(itemView.context, DetailActivity::class.java)
+                    intent.putExtra(DetailActivity.EXTRA_ID, data.id)
                     itemView.context.startActivity(intent)
                 }
+
             }
         }
     }

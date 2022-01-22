@@ -1,4 +1,4 @@
-package com.mbamgn.moviecatalogue.ui.detail_movie
+package com.mbamgn.moviecatalogue.ui.detail
 
 import com.mbamgn.moviecatalogue.utils.DataDummy
 import org.junit.Assert.assertEquals
@@ -8,13 +8,13 @@ import org.junit.Test
 
 class DetailMovieViewModelTest {
 
-    private lateinit var viewModel: DetailMovieViewModel
+    private lateinit var viewModel: DetailViewModel
     private val dummyMovie = DataDummy.generateDummyMovie()[0]
     private val movieId = dummyMovie.movieId
 
     @Before
     fun setUp() {
-        viewModel = DetailMovieViewModel()
+        viewModel = DetailViewModel()
         viewModel.setDetailMovie(movieId)
     }
 

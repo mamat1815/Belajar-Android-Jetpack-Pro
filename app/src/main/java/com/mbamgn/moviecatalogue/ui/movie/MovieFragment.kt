@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,14 +30,23 @@ class MovieFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(MovieFragmentViewModel::class.java)
+        viewModel = ViewModelProvider(this)[MovieFragmentViewModel::class.java]
         movieAdapter = MovieAdapter()
-        movieAdapter.setMovieData(viewModel.getMovie())
 
         binding?.rvMovie?.apply {
             adapter = movieAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         }
+
+        viewModel.apply {
+            getListMovie()
+            listDataItem.observe(viewLifecycleOwner, { data ->
+                movieAdapter.setMovieData(data)
+            })
+
+        }
+
+
 
     }
 

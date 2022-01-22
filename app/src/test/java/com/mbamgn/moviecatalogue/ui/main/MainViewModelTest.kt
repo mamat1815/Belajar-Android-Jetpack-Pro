@@ -1,14 +1,12 @@
 package com.mbamgn.moviecatalogue.ui.main
 
-import com.mbamgn.moviecatalogue.utils.DataDummy
-import org.junit.Assert.*
+import org.junit.Assert.assertNotNull
 import org.junit.Before
-
 import org.junit.Test
 
 class MainViewModelTest {
 
-    private lateinit var viewModel : MainViewModel
+    private lateinit var viewModel: MainViewModel
 
 
     @Before

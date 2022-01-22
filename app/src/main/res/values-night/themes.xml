@@ -17,4 +17,5 @@
     <style name="colorBg">
         <item name="android:background">@color/gray_700</item>
     </style>
+
 </resources>
