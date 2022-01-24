@@ -130,6 +130,7 @@
 
             <com.ramijemli.percentagechartview.PercentageChartView
                 android:id="@+id/percent_detail_movie"
+                style="@style/colorFont"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="8dp"

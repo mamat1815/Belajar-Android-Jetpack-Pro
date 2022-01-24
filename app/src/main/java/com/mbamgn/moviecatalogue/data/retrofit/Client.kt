@@ -1,4 +1,4 @@
-package com.mbamgn.moviecatalogue.data
+package com.mbamgn.moviecatalogue.data.retrofit
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

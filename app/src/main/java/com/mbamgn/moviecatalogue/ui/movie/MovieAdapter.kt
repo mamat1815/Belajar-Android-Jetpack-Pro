@@ -1,7 +1,6 @@
-package com.mbamgn.moviecatalogue.ui.adapter
+package com.mbamgn.moviecatalogue.ui.movie
 
 import android.content.Intent
-import android.nfc.NfcAdapter.EXTRA_ID
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -11,15 +10,15 @@ import com.bumptech.glide.request.RequestOptions
 import com.mbamgn.moviecatalogue.R
 import com.mbamgn.moviecatalogue.databinding.ItemListMovieBinding
 import com.mbamgn.moviecatalogue.model.DataItem
+import com.mbamgn.moviecatalogue.ui.DiffCallback
 import com.mbamgn.moviecatalogue.ui.detail.DetailActivity
-import com.mbamgn.moviecatalogue.ui.diffcallback.MovieDiffCallback
 
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     private val listMovie = ArrayList<DataItem>()
 
     fun setMovieData(data: List<DataItem>) {
-        val diffCallback = MovieDiffCallback(this.listMovie, data)
+        val diffCallback = DiffCallback(this.listMovie, data)
         val diffResult = DiffUtil.calculateDiff(diffCallback)
         this.listMovie.apply {
             clear()
@@ -31,12 +30,12 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
-    ): MovieAdapter.MovieViewHolder {
+    ): MovieViewHolder {
         val view = ItemListMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MovieViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: MovieAdapter.MovieViewHolder, position: Int) =
+    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) =
         holder.bind(listMovie[position])
 
     override fun getItemCount(): Int = listMovie.size
@@ -58,7 +57,10 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailActivity::class.java)
-                    intent.putExtra(DetailActivity.EXTRA_ID, data.id)
+                    intent.apply {
+                        putExtra(DetailActivity.EXTRA_TYPE, "movie")
+                        putExtra(DetailActivity.EXTRA_ID, data.id)
+                    }
                     itemView.context.startActivity(intent)
                 }
             }

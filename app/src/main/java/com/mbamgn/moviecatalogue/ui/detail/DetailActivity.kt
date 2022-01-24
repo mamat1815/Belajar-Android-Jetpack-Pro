@@ -1,6 +1,7 @@
 package com.mbamgn.moviecatalogue.ui.detail
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -14,7 +15,7 @@ import kotlin.properties.Delegates
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailMovieBinding
-    private var id by Delegates.notNull<Int>()
+    private lateinit var type: String
 
     private val viewModel: DetailViewModel by viewModels()
 
@@ -23,19 +24,23 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailMovieBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-       // id = intent.getIntExtra(EXTRA_ID, id)
+        val id = intent.getIntExtra(EXTRA_ID, 0)
+        type = intent.getStringExtra(EXTRA_TYPE)!!
 
         binding.apply {
 
             //ViewModel
             viewModel.apply {
-                getDetailMovie(585083)
+                getDetailMovie(type, id)
                 detailMovie.observe(this@DetailActivity, { data->
                     detailData(data)
                 })
-            }
 
-            //Toolbar
+                p.observe(this@DetailActivity, {
+                    Toast.makeText(this@DetailActivity, it, Toast.LENGTH_SHORT).show()
+                })
+
+            }
             //ToolBar
             setSupportActionBar(toolbarDetailMovie)
             supportActionBar?.setDisplayShowTitleEnabled(false)
@@ -49,11 +54,20 @@ class DetailActivity : AppCompatActivity() {
 
     private fun detailData(data: DataItem) {
         binding.apply {
+            val typeData = "movie"
+            if (typeData == type) {
+                tvDetailTitleMovie.text = data.title
+                tvToolbarTitleDetailMovie.text = data.title
+            } else {
+                tvDetailTitleMovie.text = data.name
+                tvToolbarTitleDetailMovie.text = data.name
+            }
 
-            tvToolbarTitleDetailMovie.text = data.title
+
             //tvDetailGenreMovie.text = data.genre
-            percentDetailMovie.setProgress(data.rate!!, true)
-            tvDetailTitleMovie.text = data.title
+            val percent = data.rate!! * 10
+            percentDetailMovie.setProgress(percent, false)
+
             tvDetailDescMovie.text = data.desc
             tvDetailTagMovie.text = data.tagline
 
@@ -69,6 +83,7 @@ class DetailActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_ID = "extra_id"
+        const val EXTRA_TYPE = "extra_type"
     }
 }
 

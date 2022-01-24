@@ -1,4 +1,4 @@
-package com.mbamgn.moviecatalogue.data
+package com.mbamgn.moviecatalogue.data.retrofit
 
 import com.mbamgn.moviecatalogue.model.DataItem
 import com.mbamgn.moviecatalogue.model.ItemResponse
@@ -12,12 +12,20 @@ interface Api {
     @GET("/3/movie/popular")
     fun listMovie(@Query("api_key") apiKey: String): Call<ItemResponse>
 
-    @GET("/3/movie")
+    @GET("/3/movie/{movie_id}")
     fun detailMovie(
+        @Path("movie_id") id: Int,
         @Query("api_key") apiKey: String,
-        @Path("id") id: Int
     ): Call<DataItem>
 
     @GET("/3/tv/popular")
     fun listTvShow(@Query("api_key") apiKey: String): Call<ItemResponse>
+
+    @GET("/3/tv/{tv_id}")
+    fun detailTvShow(
+        @Path("tv_id") id: Int,
+        @Query("api_key") apiKey: String,
+    ): Call<DataItem>
+
+
 }

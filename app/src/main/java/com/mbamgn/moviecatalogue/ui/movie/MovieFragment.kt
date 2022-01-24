@@ -5,12 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mbamgn.moviecatalogue.databinding.FragmentMovieBinding
-import com.mbamgn.moviecatalogue.ui.adapter.MovieAdapter
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MovieFragment : Fragment() {
 
@@ -18,6 +17,7 @@ class MovieFragment : Fragment() {
     private lateinit var movieAdapter: MovieAdapter
     private var _binding: FragmentMovieBinding? = null
     private val binding get() = _binding
+    //private val viewModel: MovieFragmentViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,13 +40,10 @@ class MovieFragment : Fragment() {
 
         viewModel.apply {
             getListMovie()
-            listDataItem.observe(viewLifecycleOwner, { data ->
+            listMovie.observe(viewLifecycleOwner, { data ->
                 movieAdapter.setMovieData(data)
             })
-
         }
-
-
 
     }
 

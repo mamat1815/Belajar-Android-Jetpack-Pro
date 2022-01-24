@@ -18,4 +18,8 @@
         <item name="android:background">@color/gray_700</item>
     </style>
 
+    <style name="colorFont">
+        <item name="pcv_textColor">@color/white</item>
+    </style>
+
 </resources>

@@ -9,13 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mbamgn.moviecatalogue.databinding.FragmentTvShowBinding
-import com.mbamgn.moviecatalogue.ui.adapter.MovieAdapter
-import com.mbamgn.moviecatalogue.ui.adapter.TvShowAdapter
 
 class TvShowFragment : Fragment() {
 
     private lateinit var viewModel: TvShowFragmentViewModel
-    private lateinit var tvShowAdapter: MovieAdapter
+    private lateinit var tvShowAdapter: TvShowAdapter
 
     private var _binding: FragmentTvShowBinding? = null
     private val binding get() = _binding
@@ -33,7 +31,7 @@ class TvShowFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this)[TvShowFragmentViewModel::class.java]
-        tvShowAdapter = MovieAdapter()
+        tvShowAdapter = TvShowAdapter()
 
         binding?.rvTvShow?.apply {
             adapter = tvShowAdapter
@@ -44,7 +42,7 @@ class TvShowFragment : Fragment() {
         viewModel.apply {
             getListTvShow()
             listMovie.observe(viewLifecycleOwner, { data ->
-                tvShowAdapter.setMovieData(data)
+                tvShowAdapter.setTvShowData(data)
             })
         }
 

@@ -14,9 +14,6 @@ data class DataItem(
     @SerializedName("title")
     var title: String?,
 
-    @SerializedName("name")
-    var name: String?,
-
     @SerializedName("poster_path")
     var poster: String?,
 
@@ -35,12 +32,12 @@ data class DataItem(
     @SerializedName("release_date")
     var releaseDate: String?,
 
+    //For TvShow
+    @SerializedName("name")
+    var name: String?,
 
-    /*@SerializedName("genres")
-    var tagline: String?,
-
-     */
-
+    @SerializedName("first_air_date")
+    var airDate: String?,
 
     ) : Parcelable
 

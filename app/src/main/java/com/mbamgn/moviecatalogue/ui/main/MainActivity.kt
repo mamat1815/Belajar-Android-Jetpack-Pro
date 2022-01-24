@@ -3,13 +3,10 @@ package com.mbamgn.moviecatalogue.ui.main
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mbamgn.moviecatalogue.R
 
 import com.mbamgn.moviecatalogue.databinding.ActivityMainBinding
-import com.mbamgn.moviecatalogue.ui.adapter.MainViewPager
 
 class MainActivity : AppCompatActivity() {
 

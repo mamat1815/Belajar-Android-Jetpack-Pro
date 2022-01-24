@@ -1,4 +1,4 @@
-package com.mbamgn.moviecatalogue.ui.adapter
+package com.mbamgn.moviecatalogue.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
