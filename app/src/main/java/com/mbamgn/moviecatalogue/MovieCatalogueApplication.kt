@@ -26,7 +26,15 @@ class MovieCatalogueApplication: Application() {
             //androidLogger(Level.DEBUG)
             androidLogger(if (BuildConfig.DEBUG) Level.ERROR else Level.NONE)
             androidContext(this@MovieCatalogueApplication)
-            modules(listOf(retrofit, dataResponse, dataRepository, viewModelMovieFragment))
+            modules(
+                listOf(
+                    retrofit,
+                    dataResponse,
+                    dataRepository,
+                    viewModelMovieFragment,
+                    viewModelListTvShow,
+                    )
+            )
         }
     }
 }
@@ -45,4 +53,8 @@ val dataRepository = module {
 
 val viewModelMovieFragment = module{
     viewModel{MovieFragmentViewModel(get())}
+}
+
+val viewModelListTvShow = module {
+    viewModel { TvShowFragmentViewModel(get()) }
 }
