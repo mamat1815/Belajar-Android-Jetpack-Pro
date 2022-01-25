@@ -1,5 +1,6 @@
 package com.mbamgn.moviecatalogue.data.retrofit
 
+import com.mbamgn.moviecatalogue.BuildConfig
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -7,7 +8,7 @@ import java.util.concurrent.TimeUnit
 
 object Client {
 
-    private const val BASE_URL = "https://api.themoviedb.org"
+
 
     private fun client(): OkHttpClient =
         OkHttpClient.Builder()
@@ -23,7 +24,7 @@ object Client {
 
     fun create(): Api =
         Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(BuildConfig.BASE_URL)
             .client(client())
             .addConverterFactory(GsonConverterFactory.create())
             .build()

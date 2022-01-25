@@ -3,7 +3,7 @@ package com.mbamgn.moviecatalogue.utils
 import androidx.test.espresso.IdlingResource
 import androidx.test.espresso.idling.CountingIdlingResource
 
-object EspressoIdlingObject {
+object Espresso {
 
     private const val RESOURCE = "GLOBAL"
     private val IdlingResource = CountingIdlingResource(RESOURCE)

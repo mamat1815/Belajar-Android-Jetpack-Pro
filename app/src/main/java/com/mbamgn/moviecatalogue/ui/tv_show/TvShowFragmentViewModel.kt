@@ -12,7 +12,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class TvShowFragmentViewModel : ViewModel() {
+class TvShowFragmentViewModel() : ViewModel() {
 
     private val _listTvShow = MutableLiveData<List<DataItem>>()
     val listMovie: LiveData<List<DataItem>> = _listTvShow
