@@ -10,7 +10,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="200dp"
+        style="@style/bgCard">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cd_poster_tv_show"

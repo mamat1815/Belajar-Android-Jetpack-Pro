@@ -2,16 +2,24 @@ package com.mbamgn.moviecatalogue.data.source.local
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.mbamgn.moviecatalogue.model.DataItem
 import com.mbamgn.moviecatalogue.data.source.remote.RemoteDataSource
+import com.mbamgn.moviecatalogue.data.source.DataItem
 
-class DataRepository(private val remoteDataSource: RemoteDataSource): DataSource {
+class DataRepository(private val remoteDataSource: RemoteDataSource) : DataSource {
+
+    val onLoading = MutableLiveData<Boolean>()
 
     override fun getMovie(): LiveData<List<DataItem>> {
         val listMovie = MutableLiveData<List<DataItem>>()
-        remoteDataSource.getMovieList(object : RemoteDataSource.ListMovieCallback{
+        onLoading.value = true
+        remoteDataSource.getMovieList(object : RemoteDataSource.ListMovieCallback {
             override fun onResponse(response: List<DataItem>) {
-                listMovie.value = response
+                if (response.isNullOrEmpty()) {
+                    onLoading.value = false
+                } else {
+                    onLoading.value = false
+                    listMovie.value = response
+                }
             }
         })
         return listMovie
@@ -19,9 +27,13 @@ class DataRepository(private val remoteDataSource: RemoteDataSource): DataSource
 
     override fun getTvShow(): LiveData<List<DataItem>> {
         val listTvShow = MutableLiveData<List<DataItem>>()
+
+        onLoading.value = true
         remoteDataSource.getTvShowList(object : RemoteDataSource.ListTvShowCallback {
             override fun onResponse(response: List<DataItem>) {
+                onLoading.value = false
                 listTvShow.value = response
+
             }
 
         })
@@ -32,22 +44,23 @@ class DataRepository(private val remoteDataSource: RemoteDataSource): DataSource
         val detailData = MutableLiveData<DataItem>()
         val types = "movie"
         if (type == types) {
-            remoteDataSource.getDetailMovie(id, object :RemoteDataSource.MovieDetailCallback{
+            onLoading.value = true
+            remoteDataSource.getDetailMovie(id, object : RemoteDataSource.MovieDetailCallback {
                 override fun onResponse(response: DataItem) {
+                    onLoading.value = false
                     detailData.value = response
                 }
-            } )
+            })
         } else {
-            remoteDataSource.getDetailTv(id, object :RemoteDataSource.TvShowDetailCallback{
+            onLoading.value = true
+            remoteDataSource.getDetailTv(id, object : RemoteDataSource.TvShowDetailCallback {
                 override fun onResponse(response: DataItem) {
+                    onLoading.value = false
                     detailData.value = response
                 }
             })
         }
         return detailData
     }
-
-
-
 
 }

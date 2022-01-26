@@ -8,8 +8,6 @@ import java.util.concurrent.TimeUnit
 
 object Client {
 
-
-
     private fun client(): OkHttpClient =
         OkHttpClient.Builder()
             .addInterceptor{

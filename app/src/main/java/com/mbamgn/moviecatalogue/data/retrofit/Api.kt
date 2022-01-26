@@ -1,7 +1,7 @@
 package com.mbamgn.moviecatalogue.data.retrofit
 
-import com.mbamgn.moviecatalogue.model.DataItem
-import com.mbamgn.moviecatalogue.model.ItemResponse
+import com.mbamgn.moviecatalogue.data.source.DataItem
+import com.mbamgn.moviecatalogue.data.source.ItemResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

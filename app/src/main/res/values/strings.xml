@@ -9,4 +9,7 @@
     <string name="random_movie">Random Movie Today</string>
     <string name="movie">Movie</string>
     <string name="internet_error">Please Check Your Internet Connection</string>
+    <string name="no_desc">No Description Here</string>
+    <string name="no_tag">No Tag Here</string>
+    <string name="gradient_for_backdrop">Gradient for Backdrop</string>
 </resources>

@@ -1,17 +1,14 @@
 package com.mbamgn.moviecatalogue.ui.detail
 
 import android.os.Bundle
-import android.widget.Toast
-import androidx.activity.viewModels
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.mbamgn.moviecatalogue.R
+import com.mbamgn.moviecatalogue.data.source.DataItem
 import com.mbamgn.moviecatalogue.databinding.ActivityDetailMovieBinding
-import com.mbamgn.moviecatalogue.model.DataItem
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import kotlin.properties.Delegates
-
 
 class DetailActivity : AppCompatActivity() {
 
@@ -31,9 +28,15 @@ class DetailActivity : AppCompatActivity() {
         binding.apply {
 
             //ViewModel
-            viewModel.getDetailMovie(type, id).observe(this@DetailActivity, { data ->
-                detailData(data)
-            })
+            viewModel.apply {
+                getDetailMovie(type, id).observe(this@DetailActivity, { data ->
+                    detailData(data)
+                })
+
+                getLoad().observe(this@DetailActivity, {
+                    setLoad(it)
+                })
+            }
 
             //ToolBar
             setSupportActionBar(toolbarDetailMovie)
@@ -46,30 +49,45 @@ class DetailActivity : AppCompatActivity() {
 
     }
 
+    private fun setLoad(state: Boolean) {
+        binding.pbDetail.visibility = if (state) View.VISIBLE else View.INVISIBLE
+    }
+
     private fun detailData(data: DataItem) {
         binding.apply {
             val typeData = "movie"
             if (typeData == type) {
-                tvDetailTitleMovie.text = data.title
-                tvToolbarTitleDetailMovie.text = data.title
+                tvDetailTitle.text = data.title
             } else {
-                tvDetailTitleMovie.text = data.name
-                tvToolbarTitleDetailMovie.text = data.name
+                tvDetailTitle.text = data.name
             }
 
-
-            //tvDetailGenreMovie.text = data.genre
             val percent = data.rate!! * 10
-            percentDetailMovie.setProgress(percent, false)
+            percentDetail.setProgress(percent, false)
 
-            tvDetailDescMovie.text = data.desc
-            tvDetailTagMovie.text = data.tagline
+            if (data.desc.isNullOrEmpty()) {
+                tvDetailDesc.text = resources.getString(R.string.no_desc)
+            } else {
+                tvDetailDesc.text = data.desc
+            }
+
+            if (data.tagline.isNullOrEmpty()) {
+                tvDetailTag.text = resources.getString(R.string.no_tag)
+            } else {
+                tvDetailTag.text = data.tagline
+            }
 
             Glide.with(this@DetailActivity)
                 .load("https://image.tmdb.org/t/p/w500${data.poster}")
                 .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
                 .error(R.drawable.ic_eror)
-                .into(imgDetailPosterMovie)
+                .into(imgDetailPoster)
+
+            Glide.with(this@DetailActivity)
+                .load("https://image.tmdb.org/t/p/w500${data.backdrop}")
+                .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
+                .error(R.drawable.ic_eror)
+                .into(bgDetailToolbar)
         }
 
     }

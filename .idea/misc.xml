@@ -3,13 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Document/Dicoding/Belajar Android Jetpack Pro/MovieCatalogue/app/src/main/res/layout/activity_detail_movie.xml" value="0.24074074074074073" />
+        <entry key="..\:/Document/Dicoding/Belajar Android Jetpack Pro/MovieCatalogue/app/src/main/res/drawable/bg_list_dark.xml" value="0.2015625" />
+        <entry key="..\:/Document/Dicoding/Belajar Android Jetpack Pro/MovieCatalogue/app/src/main/res/drawable/bg_list_light.xml" value="0.2015625" />
+        <entry key="..\:/Document/Dicoding/Belajar Android Jetpack Pro/MovieCatalogue/app/src/main/res/drawable/gradient.xml" value="0.2203125" />
+        <entry key="..\:/Document/Dicoding/Belajar Android Jetpack Pro/MovieCatalogue/app/src/main/res/drawable/gradient_white.xml" value="0.19479166666666667" />
+        <entry key="..\:/Document/Dicoding/Belajar Android Jetpack Pro/MovieCatalogue/app/src/main/res/drawable/ic_gradient.xml" value="0.19479166666666667" />
+        <entry key="..\:/Document/Dicoding/Belajar Android Jetpack Pro/MovieCatalogue/app/src/main/res/layout/activity_detail_movie.xml" value="0.33" />
         <entry key="..\:/Document/Dicoding/Belajar Android Jetpack Pro/MovieCatalogue/app/src/main/res/layout/activity_detail_tv_show.xml" value="0.20416666666666666" />
-        <entry key="..\:/Document/Dicoding/Belajar Android Jetpack Pro/MovieCatalogue/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Document/Dicoding/Belajar Android Jetpack Pro/MovieCatalogue/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Document/Dicoding/Belajar Android Jetpack Pro/MovieCatalogue/app/src/main/res/layout/activity_splash_screen.xml" value="0.10740740740740741" />
-        <entry key="..\:/Document/Dicoding/Belajar Android Jetpack Pro/MovieCatalogue/app/src/main/res/layout/fragment_movie.xml" value="0.21" />
+        <entry key="..\:/Document/Dicoding/Belajar Android Jetpack Pro/MovieCatalogue/app/src/main/res/layout/fragment_movie.xml" value="0.3193403298350825" />
         <entry key="..\:/Document/Dicoding/Belajar Android Jetpack Pro/MovieCatalogue/app/src/main/res/layout/fragment_tv_show.xml" value="0.20416666666666666" />
         <entry key="..\:/Document/Dicoding/Belajar Android Jetpack Pro/MovieCatalogue/app/src/main/res/layout/item_list_movie.xml" value="0.20416666666666666" />
+        <entry key="..\:/Document/Dicoding/Belajar Android Jetpack Pro/MovieCatalogue/app/src/main/res/layout/item_list_tv_show.xml" value="0.18333333333333332" />
         <entry key="..\:/Document/Dicoding/Belajar Fundamental Android/MovieCatalogue/app/src/main/res/drawable/bg_black_gradient.xml" value="0.2203125" />
         <entry key="..\:/Document/Dicoding/Belajar Fundamental Android/MovieCatalogue/app/src/main/res/drawable/bg_detail_bar.xml" value="0.2203125" />
         <entry key="..\:/Document/Dicoding/Belajar Fundamental Android/MovieCatalogue/app/src/main/res/drawable/bg_detail_curve.xml" value="0.2203125" />

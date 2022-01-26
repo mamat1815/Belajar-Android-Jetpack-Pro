@@ -1,7 +1,6 @@
 package com.mbamgn.moviecatalogue.ui.main
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mbamgn.moviecatalogue.R
@@ -11,8 +10,6 @@ import com.mbamgn.moviecatalogue.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-
-    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,11 +27,9 @@ class MainActivity : AppCompatActivity() {
             //ToolBar
             tvToolbarTitleMain.text = resources.getString(R.string.app_name)
 
-            //Title
-            tvTitleRandom.text = resources.getString(R.string.random_movie)
 
             //RandomMovieToday
-           // randomMovie(viewModel.getRandomMovie())
+            // randomMovie(viewModel.getRandomMovie())
 
         }
     }

@@ -20,27 +20,13 @@
         tools:listitem="@layout/item_list_movie" />
 
     <ProgressBar
-        android:visibility="invisible"
         android:id="@+id/pb_list_movie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:visibility="invisible"
-        android:id="@+id/tv_status_list_movie"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_light"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/internet_error" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

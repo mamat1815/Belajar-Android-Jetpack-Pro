@@ -1,7 +1,7 @@
 package com.mbamgn.moviecatalogue.data.source.local
 
 import androidx.lifecycle.LiveData
-import com.mbamgn.moviecatalogue.model.DataItem
+import com.mbamgn.moviecatalogue.data.source.DataItem
 
 interface DataSource {
 

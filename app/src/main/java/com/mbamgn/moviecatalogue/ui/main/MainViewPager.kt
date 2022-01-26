@@ -3,7 +3,6 @@ package com.mbamgn.moviecatalogue.ui.main
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.mbamgn.moviecatalogue.ui.main.MainActivity
 import com.mbamgn.moviecatalogue.ui.movie.MovieFragment
 import com.mbamgn.moviecatalogue.ui.tv_show.TvShowFragment
 

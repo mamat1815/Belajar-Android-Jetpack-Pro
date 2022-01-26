@@ -1,9 +1,8 @@
-package com.mbamgn.moviecatalogue.model
+package com.mbamgn.moviecatalogue.data.source
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
-import java.nio.channels.FileLock
 
 @Parcelize
 data class DataItem(

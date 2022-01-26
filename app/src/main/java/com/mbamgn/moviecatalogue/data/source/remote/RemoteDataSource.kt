@@ -2,21 +2,23 @@ package com.mbamgn.moviecatalogue.data.source.remote
 
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import com.mbamgn.moviecatalogue.BuildConfig
-import com.mbamgn.moviecatalogue.model.DataItem
 import com.mbamgn.moviecatalogue.data.retrofit.Api
 import com.mbamgn.moviecatalogue.data.retrofit.Client
-import com.mbamgn.moviecatalogue.model.ItemResponse
+import com.mbamgn.moviecatalogue.data.source.DataItem
+import com.mbamgn.moviecatalogue.data.source.ItemResponse
 import com.mbamgn.moviecatalogue.utils.Espresso
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class RemoteDataSource(private val retrofit: Api = Client.create()){
+class RemoteDataSource(private val retrofit: Api = Client.create()) {
 
     companion object {
-        private const val TIME: Long = 1500
+        private const val TIME: Long = 2000
+        private val TAG = RemoteDataSource::class.java.toString()
     }
 
     private val apiKey = BuildConfig.TOKEN
@@ -41,7 +43,7 @@ class RemoteDataSource(private val retrofit: Api = Client.create()){
     fun getMovieList(callback: ListMovieCallback) {
         Espresso.increment()
         handler.postDelayed({
-            retrofit.listMovie(apiKey).enqueue(object : Callback<ItemResponse>{
+            retrofit.listMovie(apiKey).enqueue(object : Callback<ItemResponse> {
                 override fun onResponse(
                     call: Call<ItemResponse>,
                     response: Response<ItemResponse>,
@@ -52,7 +54,7 @@ class RemoteDataSource(private val retrofit: Api = Client.create()){
                 }
 
                 override fun onFailure(call: Call<ItemResponse>, t: Throwable) {
-
+                    Log.d(TAG, t.printStackTrace().toString())
                 }
             })
         }, TIME)
@@ -60,26 +62,26 @@ class RemoteDataSource(private val retrofit: Api = Client.create()){
     }
 
     fun getDetailMovie(id: Int, callback: MovieDetailCallback) {
-       Espresso.increment()
+        Espresso.increment()
         handler.postDelayed({
-            retrofit.detailMovie(id, apiKey).enqueue(object : Callback<DataItem>{
+            retrofit.detailMovie(id, apiKey).enqueue(object : Callback<DataItem> {
                 override fun onResponse(call: Call<DataItem>, response: Response<DataItem>) {
-                    callback.onResponse(response.body()!!)
+                    response.body()?.let { callback.onResponse(it) }
                     Espresso.decrement()
                 }
 
                 override fun onFailure(call: Call<DataItem>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    Log.d(TAG, t.printStackTrace().toString())
                 }
 
             })
         }, TIME)
     }
 
-    fun getTvShowList(callback: ListTvShowCallback){
+    fun getTvShowList(callback: ListTvShowCallback) {
         Espresso.increment()
         handler.postDelayed({
-            retrofit.listTvShow(apiKey).enqueue(object: Callback<ItemResponse> {
+            retrofit.listTvShow(apiKey).enqueue(object : Callback<ItemResponse> {
                 override fun onResponse(
                     call: Call<ItemResponse>,
                     response: Response<ItemResponse>,
@@ -90,7 +92,7 @@ class RemoteDataSource(private val retrofit: Api = Client.create()){
                 }
 
                 override fun onFailure(call: Call<ItemResponse>, t: Throwable) {
-
+                    Log.d(TAG, t.printStackTrace().toString())
                 }
 
             })
@@ -100,14 +102,14 @@ class RemoteDataSource(private val retrofit: Api = Client.create()){
     fun getDetailTv(id: Int, callback: TvShowDetailCallback) {
         Espresso.increment()
         handler.postDelayed({
-            retrofit.detailTvShow(id, apiKey).enqueue(object : Callback<DataItem>{
+            retrofit.detailTvShow(id, apiKey).enqueue(object : Callback<DataItem> {
                 override fun onResponse(call: Call<DataItem>, response: Response<DataItem>) {
-                    callback.onResponse(response.body()!!)
+                    response.body()?.let { callback.onResponse(it) }
                     Espresso.decrement()
                 }
 
                 override fun onFailure(call: Call<DataItem>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    Log.d(TAG, t.printStackTrace().toString())
                 }
 
             })

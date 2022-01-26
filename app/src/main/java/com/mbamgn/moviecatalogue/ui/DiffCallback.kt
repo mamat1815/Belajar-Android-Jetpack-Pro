@@ -1,9 +1,12 @@
 package com.mbamgn.moviecatalogue.ui
 
 import androidx.recyclerview.widget.DiffUtil
-import com.mbamgn.moviecatalogue.model.DataItem
+import com.mbamgn.moviecatalogue.data.source.DataItem
 
-class DiffCallback(private val mOldDataItemList: List<DataItem>, private val mNewDataItemList: List<DataItem>):DiffUtil.Callback() {
+class DiffCallback(
+    private val mOldDataItemList: List<DataItem>,
+    private val mNewDataItemList: List<DataItem>,
+) : DiffUtil.Callback() {
     override fun getOldListSize(): Int = mOldDataItemList.size
     override fun getNewListSize(): Int = mNewDataItemList.size
 
@@ -17,6 +20,5 @@ class DiffCallback(private val mOldDataItemList: List<DataItem>, private val mNe
 
         return oldList.id == newList.id
     }
-
 
 }

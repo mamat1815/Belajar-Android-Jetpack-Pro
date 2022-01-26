@@ -18,8 +18,22 @@
         <item name="android:background">@color/gray_700</item>
     </style>
 
-    <style name="colorFont">
+    <style name="bgCard">
+        <item name="android:background">@drawable/bg_list_dark</item>
+    </style>
+
+    <style name="colorPercentageText">
         <item name="pcv_textColor">@color/white</item>
+    </style>
+
+    <style name="colorTabTitle">
+        <item name="tabIndicatorColor">@color/no_color</item>
+        <item name="tabTextColor">@color/white</item>
+        <item name="tabSelectedTextColor">@color/gray_600</item>
+    </style>
+
+    <style name="colorGradient">
+        <item name="android:src">@drawable/gradient_gray</item>
     </style>
 
 </resources>

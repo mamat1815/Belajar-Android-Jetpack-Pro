@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.mbamgn.moviecatalogue.R
 import com.mbamgn.moviecatalogue.databinding.ItemListTvShowBinding
-import com.mbamgn.moviecatalogue.model.DataItem
+import com.mbamgn.moviecatalogue.data.source.DataItem
 import com.mbamgn.moviecatalogue.ui.DiffCallback
 import com.mbamgn.moviecatalogue.ui.detail.DetailActivity
 
