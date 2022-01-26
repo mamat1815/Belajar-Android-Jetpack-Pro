@@ -9,6 +9,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.mbamgn.moviecatalogue.R
 import com.mbamgn.moviecatalogue.databinding.ActivityDetailMovieBinding
 import com.mbamgn.moviecatalogue.model.DataItem
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.properties.Delegates
 
 
@@ -17,7 +18,7 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailMovieBinding
     private lateinit var type: String
 
-    private val viewModel: DetailViewModel by viewModels()
+    private val viewModel: DetailViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,17 +31,10 @@ class DetailActivity : AppCompatActivity() {
         binding.apply {
 
             //ViewModel
-            viewModel.apply {
-                getDetailMovie(type, id)
-                detailMovie.observe(this@DetailActivity, { data->
-                    detailData(data)
-                })
+            viewModel.getDetailMovie(type, id).observe(this@DetailActivity, { data ->
+                detailData(data)
+            })
 
-                p.observe(this@DetailActivity, {
-                    Toast.makeText(this@DetailActivity, it, Toast.LENGTH_SHORT).show()
-                })
-
-            }
             //ToolBar
             setSupportActionBar(toolbarDetailMovie)
             supportActionBar?.setDisplayShowTitleEnabled(false)
@@ -79,7 +73,6 @@ class DetailActivity : AppCompatActivity() {
         }
 
     }
-
 
     companion object {
         const val EXTRA_ID = "extra_id"

@@ -7,6 +7,7 @@ import com.mbamgn.moviecatalogue.data.source.local.DataRepository
 import com.mbamgn.moviecatalogue.data.source.remote.RemoteDataSource
 import com.mbamgn.moviecatalogue.di.module
 import com.mbamgn.moviecatalogue.model.DataItem
+import com.mbamgn.moviecatalogue.ui.detail.DetailViewModel
 import com.mbamgn.moviecatalogue.ui.movie.MovieFragmentViewModel
 import com.mbamgn.moviecatalogue.ui.tv_show.TvShowFragmentViewModel
 import org.koin.android.ext.koin.androidContext
@@ -33,6 +34,7 @@ class MovieCatalogueApplication: Application() {
                     dataRepository,
                     viewModelMovieFragment,
                     viewModelListTvShow,
+                    viewModelDetailActivity
                     )
             )
         }
@@ -52,9 +54,13 @@ val dataRepository = module {
 }
 
 val viewModelMovieFragment = module{
-    viewModel{MovieFragmentViewModel(get())}
+    viewModel{ MovieFragmentViewModel(get()) }
 }
 
 val viewModelListTvShow = module {
     viewModel { TvShowFragmentViewModel(get()) }
+}
+
+val viewModelDetailActivity = module {
+    viewModel { DetailViewModel(get())}
 }
