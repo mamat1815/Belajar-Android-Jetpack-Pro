@@ -8,6 +8,7 @@ import com.mbamgn.moviecatalogue.data.retrofit.Api
 import com.mbamgn.moviecatalogue.data.retrofit.Client
 import com.mbamgn.moviecatalogue.data.source.DataItem
 import com.mbamgn.moviecatalogue.data.source.ItemResponse
+import com.mbamgn.moviecatalogue.data.source.local.DataRepository
 import com.mbamgn.moviecatalogue.utils.Espresso
 import retrofit2.Call
 import retrofit2.Callback
@@ -19,6 +20,20 @@ class RemoteDataSource(private val retrofit: Api = Client.create()) {
     companion object {
         private const val TIME: Long = 2000
         private val TAG = RemoteDataSource::class.java.toString()
+
+        @Volatile
+        private var INSTANCE: RemoteDataSource? = null
+
+        fun getInstance(retrofit: Api): RemoteDataSource?{
+            if (INSTANCE == null){
+                synchronized(DataRepository::class.java){
+                    if (INSTANCE == null)
+                        INSTANCE = RemoteDataSource(retrofit)
+                }
+            }
+            return INSTANCE
+        }
+
     }
 
     private val apiKey = BuildConfig.TOKEN

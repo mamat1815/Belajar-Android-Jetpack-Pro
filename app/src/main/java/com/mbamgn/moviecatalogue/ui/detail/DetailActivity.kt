@@ -2,20 +2,20 @@ package com.mbamgn.moviecatalogue.ui.detail
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.mbamgn.moviecatalogue.R
 import com.mbamgn.moviecatalogue.data.source.DataItem
 import com.mbamgn.moviecatalogue.databinding.ActivityDetailMovieBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailMovieBinding
     private lateinit var type: String
 
-    private val viewModel: DetailViewModel by viewModel()
+    private val viewModel: DetailViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
