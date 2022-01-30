@@ -2,18 +2,18 @@ package com.mbamgn.moviecatalogue.data.source.local
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.mbamgn.moviecatalogue.data.source.remote.RemoteDataSource
 import com.mbamgn.moviecatalogue.data.source.DataItem
+import com.mbamgn.moviecatalogue.data.source.remote.RemoteDataSource
 
 class DataRepository(private val remoteDataSource: RemoteDataSource) : DataSource {
 
-    companion object{
+    companion object {
         @Volatile
         private var INSTANCE: DataRepository? = null
 
-        fun getInstance(remoteRepository: RemoteDataSource): DataRepository?{
-            if (INSTANCE == null){
-                synchronized(DataRepository::class.java){
+        fun getInstance(remoteRepository: RemoteDataSource): DataRepository? {
+            if (INSTANCE == null) {
+                synchronized(DataRepository::class.java) {
                     if (INSTANCE == null)
                         INSTANCE = DataRepository(remoteRepository)
                 }
@@ -26,6 +26,7 @@ class DataRepository(private val remoteDataSource: RemoteDataSource) : DataSourc
 
     override fun getMovie(): LiveData<List<DataItem>> {
         val listMovie = MutableLiveData<List<DataItem>>()
+
         onLoading.value = true
         remoteDataSource.getMovieList(object : RemoteDataSource.ListMovieCallback {
             override fun onResponse(response: List<DataItem>) {

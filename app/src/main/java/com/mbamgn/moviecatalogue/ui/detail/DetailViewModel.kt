@@ -6,8 +6,8 @@ import com.mbamgn.moviecatalogue.data.source.local.DataRepository
 
 class DetailViewModel(private val repository: DataRepository) : ViewModel() {
 
-    fun getDetailMovie(type: String, id: Int) = repository.getDetailData(id, type)
+    fun getDetailData(type: String, id: Int) = repository.getDetailData(id, type)
 
-    fun getLoad() : LiveData<Boolean> = repository.onLoading
+    fun getLoad(): LiveData<Boolean> = repository.onLoading
 
 }

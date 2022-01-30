@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.mbamgn.moviecatalogue.data.source.DataItem
 import com.mbamgn.moviecatalogue.data.source.remote.RemoteDataSource
 
-class FakeDataRepository(private val remoteDataSource: RemoteDataSource): DataSource {
+class FakeDataRepository(private val remoteDataSource: RemoteDataSource) : DataSource {
 
     val onLoading = MutableLiveData<Boolean>()
 

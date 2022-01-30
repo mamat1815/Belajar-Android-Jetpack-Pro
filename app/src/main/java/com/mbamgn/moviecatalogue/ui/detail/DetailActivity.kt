@@ -2,20 +2,27 @@ package com.mbamgn.moviecatalogue.ui.detail
 
 import android.os.Bundle
 import android.view.View
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.mbamgn.moviecatalogue.R
 import com.mbamgn.moviecatalogue.data.source.DataItem
 import com.mbamgn.moviecatalogue.databinding.ActivityDetailMovieBinding
+import com.mbamgn.moviecatalogue.utils.ViewModelFactory
 
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailMovieBinding
     private lateinit var type: String
 
-    private val viewModel: DetailViewModel by viewModels()
+    private val viewModel by lazy {
+        val viewModelFactory = application.let { ViewModelFactory.getInstance() }
+        viewModelFactory?.let {
+            ViewModelProvider(this,
+                it).get(DetailViewModel::class.java)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,14 +35,14 @@ class DetailActivity : AppCompatActivity() {
         binding.apply {
 
             //ViewModel
-            viewModel.apply {
-                getDetailMovie(type, id).observe(this@DetailActivity, { data ->
+            viewModel?.apply {
+                getDetailData(type, id).observe(this@DetailActivity) { data ->
                     detailData(data)
-                })
+                }
 
-                getLoad().observe(this@DetailActivity, {
+                getLoad().observe(this@DetailActivity) {
                     setLoad(it)
-                })
+                }
             }
 
             //ToolBar

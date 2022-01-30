@@ -6,7 +6,6 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.mbamgn.moviecatalogue.ui.movie.MovieFragment
 import com.mbamgn.moviecatalogue.ui.tv_show.TvShowFragment
 
-
 class MainViewPager(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
     override fun createFragment(position: Int): Fragment {
         return when (position) {

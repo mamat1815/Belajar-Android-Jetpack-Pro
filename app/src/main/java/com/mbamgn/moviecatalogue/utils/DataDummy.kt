@@ -1,7 +1,6 @@
 package com.mbamgn.moviecatalogue.utils
 
 import com.mbamgn.moviecatalogue.data.source.DataItem
-import com.mbamgn.moviecatalogue.data.source.ItemResponse
 
 object DataDummy {
 

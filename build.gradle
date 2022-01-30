@@ -44,5 +44,6 @@ ext {
 
     //Mockito
     mockitoVersion = '3.6.0'
+    mockitoKotlinVersion = '2.2.0'
 }
 

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.mbamgn.moviecatalogue.data.source.local.DataRepository
 import com.mbamgn.moviecatalogue.di.Injection
+import com.mbamgn.moviecatalogue.ui.detail.DetailViewModel
 import com.mbamgn.moviecatalogue.ui.movie.MovieFragmentViewModel
 import com.mbamgn.moviecatalogue.ui.tv_show.TvShowFragmentViewModel
 
@@ -34,6 +35,8 @@ class ViewModelFactory(private val dataRepository: DataRepository) :
             modelClass.isAssignableFrom(MovieFragmentViewModel::class.java) -> MovieFragmentViewModel(
                 dataRepository) as T
             modelClass.isAssignableFrom(TvShowFragmentViewModel::class.java) -> TvShowFragmentViewModel(
+                dataRepository) as T
+            modelClass.isAssignableFrom(DetailViewModel::class.java) -> DetailViewModel(
                 dataRepository) as T
             else -> throw IllegalArgumentException("Unknown ViewModel: " + modelClass.name)
         }
