@@ -1,11 +1,13 @@
 package com.mbamgn.moviecatalogue.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mbamgn.moviecatalogue.R
-
 import com.mbamgn.moviecatalogue.databinding.ActivityMainBinding
+import com.mbamgn.moviecatalogue.ui.favorite.FavoriteActivity
+import com.mbamgn.moviecatalogue.ui.main.adapter.MainViewPager
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,27 +29,14 @@ class MainActivity : AppCompatActivity() {
             //ToolBar
             tvToolbarTitleMain.text = resources.getString(R.string.app_name)
 
-
-            //RandomMovieToday
-            // randomMovie(viewModel.getRandomMovie())
-
-        }
-    }
-
-    /*private fun randomMovie(data: DataEntity) {
-        binding.apply {
-
-            tvTitleMain.text = data.title
-            Glide.with(this@MainActivity)
-                .load(data.img)
-                .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
-                .error(R.drawable.ic_eror)
-                .into(imgMainPoster)
+            //Fab Fav
+            fabFav.setOnClickListener {
+                val intent = Intent(this@MainActivity, FavoriteActivity::class.java)
+                startActivity(intent)
+            }
 
         }
     }
-
-     */
 
     companion object {
         val TAB_TITLES = intArrayOf(

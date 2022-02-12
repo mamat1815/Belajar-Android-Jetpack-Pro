@@ -1,15 +1,20 @@
 package com.mbamgn.moviecatalogue.di
 
-import com.mbamgn.moviecatalogue.data.retrofit.Client
-import com.mbamgn.moviecatalogue.data.source.local.DataRepository
-import com.mbamgn.moviecatalogue.data.source.remote.RemoteDataSource
+import android.content.Context
+import com.mbamgn.moviecatalogue.data.DataRepository
+import com.mbamgn.moviecatalogue.data.local.LocalDataSource
+import com.mbamgn.moviecatalogue.data.local.database.FavDataDatabase
+import com.mbamgn.moviecatalogue.data.remote.RemoteDataSource
+import com.mbamgn.moviecatalogue.data.remote.retrofit.Client
 
 object Injection {
 
-    fun dataRepository(): DataRepository {
-        val repository = RemoteDataSource.getInstance(Client.create())
-        return repository?.let { DataRepository.getInstance(it) }!!
-    }
+    fun repository(context: Context): DataRepository {
+        val db = FavDataDatabase.getDatabase(context)
+        val remoteDataSource = RemoteDataSource.getInstance(Client.create())
+        val localDataSource = LocalDataSource.getInstance(db.favDataDao())
 
+        return remoteDataSource?.let { DataRepository.getInstance(it, localDataSource) }!!
+    }
 
 }

@@ -28,9 +28,9 @@
     </style>
 
     <style name="colorTabTitle">
-        <item name="tabIndicatorColor">@color/no_color</item>
+        <item name="tabIndicatorColor">@color/gray_600</item>
         <item name="tabTextColor">@color/white</item>
-        <item name="tabSelectedTextColor">@color/gray_300</item>
+        <item name="tabSelectedTextColor">@color/white</item>
     </style>
 
     <style name="colorGradient">

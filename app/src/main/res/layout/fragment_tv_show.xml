@@ -6,25 +6,41 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".ui.tv_show.TvShowFragment">
+    tools:context=".ui.main.tv_show.TvShowFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cd_search_tv_show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/search_tv_show"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:theme="@style/searchView" />
+
+    </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_tv_show"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/cd_search_tv_show"
+        tools:layout_editor_absoluteX="16dp"
         tools:listitem="@layout/item_list_tv_show" />
 
     <ProgressBar
         android:id="@+id/pb_list_tv_show"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/cd_search_tv_show" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

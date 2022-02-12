@@ -12,6 +12,14 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@color/gray_700</item>
+    </style>
+
+    <!-- SearchView -->
+    <style name="searchView">
+        <item name="titleTextColor">@color/white</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:editTextColor">@color/white</item>
     </style>
 
     <style name="colorBg">
@@ -29,7 +37,7 @@
     <style name="colorTabTitle">
         <item name="tabIndicatorColor">@color/no_color</item>
         <item name="tabTextColor">@color/white</item>
-        <item name="tabSelectedTextColor">@color/gray_600</item>
+        <item name="tabSelectedTextColor">@color/white</item>
     </style>
 
     <style name="colorGradient">
